@@ -1,0 +1,2 @@
+# jogador
+ primeiro repositorio versionado
