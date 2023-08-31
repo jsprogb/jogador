@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adivinaha o numero</title>
+    
+    <style>
+.error{
+    color: red;
+    font-size: 50px;
+
+}
+.exito{
+    color: green
+}
+    </style>
+</head>
+<body>
+    
+<h3>adivinaha o numero</h3>
+<h4> Intentos: <span id="intentosPantalla"></span>
+</h4>
+<h4> Tiempo: 
+    <span id="tiempoPantalla"></span>
+</h4>
+<label> Introduza o teu numero</label>
+<input value =0 id="input_number" type="number">
+<button onclick="valor()" >Enviar</button>
+   <h4 class="" id ="pantalla"> </h4> 
+    
+    <script>
+ setInterval(() => {
+        tiempo--; 
+        if(tiempo < 0){
+            tiempo = 0; 
+        }
+        tiempoPantalla.innerHTML = tiempo;
+    
+}, 1000);
+
+        var intentos = 0;
+        var tiempo = 60;
+
+        var tiempoPantalla = document.getElementById("tiempoPantalla");
+        tiempoPantalla.innerHTML = tiempo;
+
+
+
+        var intentosPantalla = document.getElementById("intentosPantalla");
+        intentosPantalla.innerHTML = intentos;
+         
+// A referencia de entrada de HTML em JS
+var input = document.getElementById("input_number");
+// refereciamos os resultados 
+var pantalla = document.getElementById("pantalla");
+
+        const numeroSecreto =Math.floor(Math.random()*100); // converte para numero inteiro
+        console.log(numeroSecreto);
+
+//funcao que envia co botao
+function valor(){
+   
+    intentos ++;
+
+    intentosPantalla.innerHTML = intentos;
+   console.log("enviar numero");
+   //console.log(pantalla.innerHTML);
+
+// capturamos o valor que o usuario introduziu
+var numeroUsuario = input.value;
+
+numeroUsuario = parseInt(numeroUsuario); // converte o string em inteiro
+
+// As tres possibidades 
+if(numeroUsuario > numeroSecreto){
+    console.log("Passate...e muito alto!");
+    pantalla.innerHTML = "Estas acima... tente novamente!";
+    pantalla.className = "error";
+}
+if(numeroUsuario < numeroSecreto){
+        console.log("baixo... e muito baixo!");
+        pantalla.innerHTML = "Estas abaixo... tente novamente!";
+        pantalla.className = "error";
+   
+    }
+if(numeroUsuario==numeroSecreto){
+            console.log("Ganhaste!!!");
+            pantalla.innerHTML = "Ganhaste!!!";
+            pantalla.className = "exito";
+        }
+console.log(numeroUsuario);
+console.log(numeroSecreto);
+
+
+}
+    </script>
+</body>
+</html>
